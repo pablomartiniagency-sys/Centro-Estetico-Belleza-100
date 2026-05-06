@@ -1,0 +1,37 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <div class="container header-container">
+    <div class="logo">
+      <a routerLink="/" (click)="closeMenu()">
+        <span class="logo-title">Belleza 100%</span>
+        <span class="logo-subtitle">Centro Estético</span>
+      </a>
+    </div>
+
+    <!-- Hamburger button for mobile -->
+    <button class="menu-toggle" [class.active]="isMenuOpen" (click)="toggleMenu()" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <nav class="nav" [class.open]="isMenuOpen">
+      <ul class="nav-list">
+        <li>
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Inicio</a>
+        </li>
+        <li>
+          <a routerLink="/quienes-somos" routerLinkActive="active" (click)="closeMenu()">Quiénes somos</a>
+        </li>
+        <li>
+          <a routerLink="/tratamientos" routerLinkActive="active" (click)="closeMenu()">Tratamientos</a>
+        </li>
+        <li>
+          <a routerLink="/contacto" routerLinkActive="active" (click)="closeMenu()">Contacto</a>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://wa.me/34697981069" target="_blank" mat-flat-button color="primary" (click)="closeMenu()">Reservar cita</a>
+      </div>
+    </nav>
+  </div>
+</header>

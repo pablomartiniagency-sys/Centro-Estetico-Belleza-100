@@ -1,0 +1,87 @@
+<div class="treatments-page">
+  
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container text-center">
+      <h1 class="page-title">Nuestros Tratamientos</h1>
+      <p class="page-subtitle">Descubre todos los servicios que ofrecemos para potenciar tu belleza natural y cuidar tu bienestar.</p>
+    </div>
+  </section>
+
+  <!-- Lista de Tratamientos -->
+  <section class="treatments-list section-padding">
+    <div class="container">
+      <div class="treatments-grid">
+        
+        <div class="treatment-card" appGsapHover>
+          <div class="treatment-image placeholder-facial"></div>
+          <div class="treatment-content">
+            <h3>Tratamientos faciales</h3>
+            <p>Higiene profunda, hidratación, antiaging, radiofrecuencia y protocolos de luminosidad para que tu rostro luzca radiante.</p>
+            <button mat-stroked-button color="primary" (click)="openModal()">Reservar cita</button>
+          </div>
+        </div>
+
+        <div class="treatment-card" appGsapHover>
+          <div class="treatment-image placeholder-corporal"></div>
+          <div class="treatment-content">
+            <h3>Tratamientos corporales</h3>
+            <p>Maderoterapia, presoterapia, reafirmantes, reductores y anticelulíticos. Moldea tu figura con nuestras técnicas avanzadas.</p>
+            <button mat-stroked-button color="primary" (click)="openModal()">Reservar cita</button>
+          </div>
+        </div>
+
+        <div class="treatment-card" appGsapHover>
+          <div class="treatment-image placeholder-depilacion"></div>
+          <div class="treatment-content">
+            <h3>Depilación</h3>
+            <p>Cera caliente, cera tibia y depilación láser definitiva. Especialistas en pieles sensibles.</p>
+            <button mat-stroked-button color="primary" (click)="openModal()">Reservar cita</button>
+          </div>
+        </div>
+
+        <div class="treatment-card" appGsapHover>
+          <div class="treatment-image placeholder-cejas"></div>
+          <div class="treatment-content">
+            <h3>Cejas y pestañas</h3>
+            <p>Diseño de cejas, lifting de pestañas, extensiones y tinte para realzar tu mirada.</p>
+            <button mat-stroked-button color="primary" (click)="openModal()">Reservar cita</button>
+          </div>
+        </div>
+
+        <div class="treatment-card" appGsapHover>
+          <div class="treatment-image placeholder-manicura"></div>
+          <div class="treatment-content">
+            <h3>Manicura y pedicura</h3>
+            <p>Esmaltado tradicional, semipermanente, spa de manos y pies, uñas esculpidas y decoraciones.</p>
+            <button mat-stroked-button color="primary" (click)="openModal()">Reservar cita</button>
+          </div>
+        </div>
+
+        <div class="treatment-card" appGsapHover>
+          <div class="treatment-image placeholder-masaje"></div>
+          <div class="treatment-content">
+            <h3>Masajes y bienestar</h3>
+            <p>Relajantes, descontracturantes, drenaje linfático y rituales spa para liberar tensiones.</p>
+            <button mat-stroked-button color="primary" (click)="openModal()">Reservar cita</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="final-cta section-padding bg-light">
+    <div class="container text-center">
+      <div class="cta-box">
+        <h2>¿No sabes por dónde empezar?</h2>
+        <p>Pide una cita de diagnóstico gratuito y te asesoraremos sin compromiso sobre el mejor tratamiento para ti.</p>
+        <button mat-flat-button color="primary" (click)="openModal()">Solicitar diagnóstico</button>
+      </div>
+    </div>
+  </section>
+
+  <app-reservation-modal [isOpen]="isModalOpen" (close)="closeModal()"></app-reservation-modal>
+
+</div>

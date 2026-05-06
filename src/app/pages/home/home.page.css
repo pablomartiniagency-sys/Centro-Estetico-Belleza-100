@@ -1,0 +1,345 @@
+/* General Home Styles */
+.home-page {
+  overflow-x: hidden;
+  background-color: var(--color-bg-light);
+}
+
+.text-primary { color: var(--color-primary); }
+.text-white { color: var(--color-bg-white); }
+.bg-dark { background-color: var(--color-bg-dark); }
+.bg-light { background-color: var(--color-bg-light); }
+.bg-secondary { background-color: var(--color-secondary); }
+
+/* Hero Section (Clip Path Reveal) */
+.hero-wrapper {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-clip {
+  width: 100%;
+  height: 100%;
+  /* Initially clipped as a narrow vertical slit for dramatic opening */
+  clip-path: inset(0% 45% 0% 45%); 
+  will-change: clip-path;
+}
+
+.hero {
+  background-image: url('/images/hero_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transform: scale(1.1); /* To be scaled down on load */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(26, 29, 26, 0.4), rgba(26, 29, 26, 0.7));
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+}
+
+/* GSAP Text Reveal Utility */
+.text-reveal {
+  overflow: hidden;
+}
+
+.text-reveal .reveal-inner {
+  display: inline-block;
+  transform: translateY(100%); /* Hidden initially */
+}
+
+.hero-title {
+  font-size: 6rem;
+  color: var(--color-bg-light);
+  margin-bottom: 1rem;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.hero-subtitle {
+  font-size: 1.8rem;
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--color-primary);
+  margin-bottom: 2.5rem;
+}
+
+.magnetic-btn {
+  display: inline-block;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* Story Sections */
+.story-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 0;
+}
+
+.story-section-pin {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pin-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/about_salon.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.pin-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(26, 29, 26, 0.7);
+  z-index: 1;
+}
+
+.pin-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 2rem;
+}
+
+.elegant-text {
+  font-size: 4.5rem;
+  font-family: var(--font-heading);
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.sub-elegant-text {
+  font-size: 2.2rem;
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+.highlight-text {
+  font-size: 4rem;
+  margin-top: 1rem;
+}
+
+.signature {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+/* Trust Block */
+.trust-block {
+  padding: 8rem 0;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+}
+
+.trust-card {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--color-bg-white);
+  border-radius: 0; /* Premium edgy look */
+  border: 1px solid var(--color-border);
+}
+
+.trust-card h3 {
+  color: var(--color-secondary);
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.trust-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+/* Horizontal Scroll Section */
+.horizontal-section {
+  width: 100vw;
+  height: 100vh; /* Fixed height for pinning */
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg-light);
+}
+
+.horizontal-container {
+  display: flex;
+  height: 100vh;
+  width: fit-content;
+  align-items: center;
+  padding: 0 10vw;
+}
+
+.horizontal-panel {
+  width: 40vw; /* Width of each panel */
+  height: 60vh;
+  flex-shrink: 0;
+  margin-right: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.intro-panel {
+  width: 30vw;
+}
+
+.intro-panel .panel-desc {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  color: var(--color-text-light);
+  margin-top: 1rem;
+}
+
+.treatment-card-premium {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.treatment-image {
+  flex-grow: 1;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.2); /* For parallax inside */
+}
+
+.treatment-content {
+  background: var(--color-bg-white);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 4px solid var(--color-primary);
+}
+
+.treatment-content h3 {
+  font-size: 1.5rem;
+  color: var(--color-text-dark);
+  font-family: var(--font-heading);
+}
+
+.treatment-content p {
+  color: var(--color-text-light);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.explore-btn {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 8rem 0;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.testimonial-card {
+  background-color: var(--color-bg-white);
+  padding: 3rem;
+  border-left: 2px solid var(--color-primary);
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 5rem;
+  color: var(--color-bg-light);
+  font-family: serif;
+  line-height: 1;
+}
+
+.stars {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: var(--color-text-dark);
+}
+
+/* Call to Action Final */
+.cta-box {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-box p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Placeholders */
+.placeholder-facial { background-image: url('/images/treat_facial.jpg'); }
+.placeholder-corporal { background-image: url('/images/treat_corporal.jpg'); }
+.placeholder-depilacion { background-image: url('/images/treat_depilacion.jpg'); }
+.placeholder-cejas { background-image: url('/images/treat_cejas.jpg'); }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-title { font-size: 3.5rem; }
+  .elegant-text { font-size: 3rem; }
+  .horizontal-panel { width: 80vw; }
+  .intro-panel { width: 80vw; }
+  .hero-clip { clip-path: inset(0% 0% 0% 0%); } /* Disable initial clip on mobile for safety */
+}

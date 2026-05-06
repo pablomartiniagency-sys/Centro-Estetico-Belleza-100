@@ -1,0 +1,139 @@
+<div class="home-page" #homePage>
+  
+  <!-- Hero Section con Clip-Path -->
+  <section class="hero-wrapper" #heroWrapper>
+    <div class="hero-clip" #heroClip>
+      <div class="hero" #heroSection>
+        <div class="hero-overlay"></div>
+        <div class="container hero-container">
+          <div class="hero-content" #heroContent>
+            <h1 class="hero-title text-reveal"><span class="reveal-inner">Belleza 100%</span></h1>
+            <h2 class="hero-subtitle text-reveal delay-1"><span class="reveal-inner">Tu retiro de belleza botánico.</span></h2>
+            <div class="hero-buttons text-reveal delay-2">
+              <span class="reveal-inner">
+                <a routerLink="/contacto" mat-flat-button color="primary" class="hero-btn">Reservar cita</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Section 1 -->
+  <section class="story-section bg-dark text-center" #story1>
+    <div class="container">
+      <h2 class="elegant-text highlight text-white" #storyText1>No es solo tu piel...</h2>
+      <h3 class="sub-elegant-text mt-4 text-primary" #storyText2>es cómo te sientes cuando te miras.</h3>
+    </div>
+  </section>
+
+  <!-- Trust Block -->
+  <section class="trust-block section-padding bg-light" #trustSection>
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-card trust-item">
+          <span class="trust-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </span>
+          <h3>Atención cercana</h3>
+          <p>Te escuchamos para ofrecerte exactamente lo que necesitas.</p>
+        </div>
+        <div class="trust-card trust-item">
+          <span class="trust-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          </span>
+          <h3>Tratamientos personalizados</h3>
+          <p>Adaptamos cada protocolo a las necesidades de tu piel.</p>
+        </div>
+        <div class="trust-card trust-item">
+          <span class="trust-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13"/><path d="M13 3l3 6-4 13"/></svg>
+          </span>
+          <h3>Cuidado profesional</h3>
+          <p>Cosmética seleccionada y técnicas de vanguardia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Section 2 (Pinning) -->
+  <section class="story-section-pin" #pinSection>
+    <div class="pin-bg" #pinBg></div>
+    <div class="pin-overlay"></div>
+    <div class="pin-content text-center">
+      <h2 class="elegant-text text-white" #pinText1>Si tu piel ya no es la misma...</h2>
+      <h3 class="highlight-text text-primary" #pinText2>Este es tu momento.</h3>
+    </div>
+  </section>
+
+  <!-- Horizontal Scroll Section (Tratamientos) -->
+  <section class="horizontal-section" #horizontalSection>
+    <div class="horizontal-container" #horizontalContainer>
+      
+      <!-- Panel de Título -->
+      <div class="horizontal-panel intro-panel">
+        <h2 class="elegant-text">El Arte de<br>Cuidarte</h2>
+        <p class="panel-desc">Desliza para descubrir nuestros tratamientos estrella diseñados en exclusiva para ti.</p>
+      </div>
+
+      <!-- Paneles de Tratamientos -->
+      <div class="horizontal-panel treatment-panel">
+        <div class="treatment-card-premium">
+          <div class="treatment-image placeholder-facial" #parallaxImage1></div>
+          <div class="treatment-content">
+            <h3>Higiene Profunda</h3>
+            <p>Purifica y oxigena tu rostro.</p>
+            <span class="explore-btn">Descubrir</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-panel treatment-panel">
+        <div class="treatment-card-premium">
+          <div class="treatment-image placeholder-corporal" #parallaxImage2></div>
+          <div class="treatment-content">
+            <h3>Presoterapia</h3>
+            <p>Drenaje linfático y bienestar total.</p>
+            <span class="explore-btn">Descubrir</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-panel treatment-panel">
+        <div class="treatment-card-premium">
+          <div class="treatment-image placeholder-cejas" #parallaxImage3></div>
+          <div class="treatment-content">
+            <h3>Mirada Perfecta</h3>
+            <p>Microblading y laminado de cejas.</p>
+            <span class="explore-btn">Descubrir</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-panel treatment-panel">
+        <div class="treatment-card-premium">
+          <div class="treatment-image placeholder-depilacion" #parallaxImage4></div>
+          <div class="treatment-content">
+            <h3>Depilación Láser</h3>
+            <p>Tecnología indolora y definitiva.</p>
+            <span class="explore-btn">Descubrir</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Call to Action Final -->
+  <section class="cta-section section-padding bg-secondary" #ctaSection>
+    <div class="container text-center text-white">
+      <div class="cta-box">
+        <h2 class="text-white">¿Lista para tu momento?</h2>
+        <p>Hablemos directamente por WhatsApp y diseñemos tu plan de belleza.</p>
+        <a routerLink="/contacto" mat-flat-button color="primary" class="mt-4 hero-btn">Iniciar conversación</a>
+      </div>
+    </div>
+  </section>
+
+</div>

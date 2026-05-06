@@ -1,0 +1,82 @@
+@if (isOpen) {
+<div class="modal-backdrop" (click)="onClose()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="onClose()" aria-label="Cerrar modal">&times;</button>
+    
+    @if (currentView === 'options') {
+      <h2 class="modal-title">¿Cómo prefieres contactarnos?</h2>
+      <p class="modal-subtitle">Elige la opción que te resulte más cómoda para reservar tu cita.</p>
+
+      <div class="modal-options">
+        <a href="https://wa.me/34000000000" target="_blank" class="modal-option-card whatsapp-card" (click)="onClose()">
+          <span class="modal-icon">💬</span>
+          <h3>WhatsApp</h3>
+          <p>Respuesta rápida e inmediata</p>
+        </a>
+
+        <button class="modal-option-card email-card" (click)="showForm()">
+          <span class="modal-icon">✉️</span>
+          <h3>Correo Electrónico</h3>
+          <p>Para consultas más detalladas</p>
+        </button>
+      </div>
+    }
+
+    @if (currentView === 'form') {
+      <h2 class="modal-title">Déjanos tus datos</h2>
+      <p class="modal-subtitle">Rellena el formulario y te contactaremos lo antes posible.</p>
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" formControlName="nombre" placeholder="Tu nombre"
+                 [class.invalid]="contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched">
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" formControlName="telefono" placeholder="Ej. 600 000 000"
+                   [class.invalid]="contactForm.get('telefono')?.invalid && contactForm.get('telefono')?.touched">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" placeholder="tu@email.com"
+                   [class.invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tratamientoDeseado">Tratamiento de interés (opcional)</label>
+          <input type="text" id="tratamientoDeseado" formControlName="tratamientoDeseado" placeholder="Ej. Higiene facial">
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Mensaje o preferencia de horario (opcional)</label>
+          <textarea id="mensaje" formControlName="mensaje" rows="3" placeholder="¿En qué te podemos ayudar?"></textarea>
+        </div>
+
+        <button type="submit" mat-flat-button color="primary" class="submit-btn">Enviar solicitud</button>
+      </form>
+    }
+
+    @if (currentView === 'loading') {
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <h3>Enviando solicitud...</h3>
+        <p>Por favor, espera unos instantes.</p>
+      </div>
+    }
+
+    @if (currentView === 'success') {
+      <div class="success-state">
+        <span class="modal-icon success-icon">✨</span>
+        <h2 class="modal-title">¡Solicitud enviada!</h2>
+        <p class="modal-subtitle">Gracias por contactarnos. Hemos recibido tus datos y te responderemos a la mayor brevedad posible para confirmar tu cita.</p>
+        <button mat-flat-button color="primary" (click)="onClose()">Cerrar</button>
+      </div>
+    }
+
+  </div>
+</div>
+}
