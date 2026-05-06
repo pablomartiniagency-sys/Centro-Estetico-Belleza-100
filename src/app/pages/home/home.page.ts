@@ -39,124 +39,155 @@ export class HomePage implements AfterViewInit, OnDestroy {
   }
 
   initAnimations() {
-    // 0. Intro Cinematic (Clip Path Reveal)
-    const introTl = gsap.timeline();
-    
-    // Animar la apertura del telón
-    introTl.to(this.heroClip.nativeElement, {
-      clipPath: 'inset(0% 0% 0% 0%)',
-      duration: 1.5,
-      ease: 'power4.inOut'
-    }, 0);
-    
-    // Hacer zoom out a la imagen
-    introTl.to(this.heroSection.nativeElement, {
-      scale: 1,
-      duration: 1.5,
-      ease: 'power4.inOut'
-    }, 0);
+    let mm = gsap.matchMedia();
 
-    // Revelar los textos línea a línea (usando el wrapper oculto)
-    const textReveals = this.el.nativeElement.querySelectorAll('.reveal-inner');
-    introTl.fromTo(textReveals, 
-      { y: '100%' }, 
-      { y: '0%', duration: 1, stagger: 0.2, ease: 'power3.out' }, 
-      1 // Start slightly after clip path begins opening
-    );
+    mm.add({
+      isDesktop: "(min-width: 769px)",
+      isMobile: "(max-width: 768px)"
+    }, (context) => {
+      let { isDesktop, isMobile } = context.conditions as any;
 
-    // 1. Hero Parallax on Scroll
-    gsap.to(this.heroSection.nativeElement, {
-      backgroundPosition: `50% 30%`,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero-wrapper',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
+      // 0. Intro Cinematic
+      const introTl = gsap.timeline();
+      
+      if (isDesktop) {
+        introTl.to(this.heroClip.nativeElement, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 1.5,
+          ease: 'power4.inOut'
+        }, 0);
+      } else {
+        gsap.set(this.heroClip.nativeElement, { clipPath: 'inset(0% 0% 0% 0%)' });
       }
-    });
 
-    // 2. Story 1: Text Fade Up
-    gsap.fromTo([this.storyText1.nativeElement, this.storyText2.nativeElement], 
-      { y: 50, opacity: 0 }, 
-      { 
-        y: 0, 
-        opacity: 1, 
-        duration: 1, 
-        stagger: 0.3,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: this.storyText1.nativeElement,
-          start: 'top 80%',
+      introTl.fromTo(this.heroSection.nativeElement, 
+        { scale: isDesktop ? 1.2 : 1 },
+        { scale: 1, duration: 1.5, ease: 'power4.inOut' }, 
+        0
+      );
+
+      const textReveals = this.el.nativeElement.querySelectorAll('.reveal-inner');
+      introTl.fromTo(textReveals, 
+        { y: '100%' }, 
+        { y: '0%', duration: 1, stagger: 0.2, ease: 'power3.out' }, 
+        isDesktop ? 1 : 0.2 
+      );
+
+      // 1. Hero Parallax
+      if (isDesktop) {
+        gsap.to(this.heroSection.nativeElement, {
+          backgroundPosition: `50% 30%`,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero-wrapper',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+      }
+
+      // 2. Story 1: Text Fade Up
+      gsap.fromTo([this.storyText1.nativeElement, this.storyText2.nativeElement], 
+        { y: 50, opacity: 0 }, 
+        { 
+          y: 0, opacity: 1, duration: 1, stagger: 0.3, ease: 'power2.out',
+          scrollTrigger: {
+            trigger: this.storyText1.nativeElement,
+            start: 'top 80%',
+          }
         }
-      }
-    );
+      );
 
-    // 3. Trust Block Stagger
-    const trustItems = this.el.nativeElement.querySelectorAll('.trust-item');
-    gsap.fromTo(trustItems, 
-      { y: 50, opacity: 0 }, 
-      { 
-        y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.trust-grid',
-          start: 'top 85%'
+      // 3. Trust Block
+      const trustItems = this.el.nativeElement.querySelectorAll('.trust-item');
+      gsap.fromTo(trustItems, 
+        { y: 50, opacity: 0 }, 
+        { 
+          y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.trust-grid',
+            start: 'top 85%'
+          }
         }
+      );
+
+      // 4. Pinning Section
+      if (isDesktop) {
+        const pinTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: this.pinSection.nativeElement,
+            start: 'top top',
+            end: '+=100%', 
+            pin: true,
+            scrub: true
+          }
+        });
+
+        pinTl.to(this.pinBg.nativeElement, { scale: 1.1, ease: 'none', duration: 1 }, 0)
+             .to(this.pinText1.nativeElement, { opacity: 0, y: -50, duration: 0.4 }, 0.1)
+             .fromTo(this.pinText2.nativeElement, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.4 }, 0.4);
+      } else {
+        gsap.fromTo([this.pinText1.nativeElement, this.pinText2.nativeElement],
+          { y: 30, opacity: 0 },
+          { 
+            y: 0, opacity: 1, stagger: 0.2, duration: 0.8,
+            scrollTrigger: {
+              trigger: this.pinSection.nativeElement,
+              start: 'top 70%'
+            }
+          }
+        );
       }
-    );
 
-    // 4. Pinning Section: "Si tu piel ya no es la misma..."
-    const pinTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: this.pinSection.nativeElement,
-        start: 'top top',
-        end: '+=100%', 
-        pin: true,
-        scrub: true
+      // 5. Horizontal Scroll Section
+      if (isDesktop) {
+        const container = this.horizontalContainer.nativeElement;
+        const getScrollAmount = () => -(container.scrollWidth - window.innerWidth);
+        
+        gsap.to(container, {
+          x: getScrollAmount,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: this.horizontalSection.nativeElement,
+            start: 'top top',
+            end: () => `+=${container.scrollWidth}`, 
+            pin: true,
+            scrub: 1,
+            invalidateOnRefresh: true
+          }
+        });
+
+        const parallaxImages = this.el.nativeElement.querySelectorAll('.treatment-image');
+        parallaxImages.forEach((img: HTMLElement) => {
+          gsap.to(img, {
+            backgroundPosition: '100% 50%',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: this.horizontalSection.nativeElement,
+              start: 'top top',
+              end: () => `+=${container.scrollWidth}`,
+              scrub: true
+            }
+          });
+        });
+      } else {
+        gsap.set(this.horizontalContainer.nativeElement, { clearProps: "all" });
+        const panels = this.el.nativeElement.querySelectorAll('.horizontal-panel');
+        gsap.fromTo(panels, 
+          { y: 50, opacity: 0 },
+          {
+            y: 0, opacity: 1, stagger: 0.2, duration: 0.8, ease: 'power2.out',
+            scrollTrigger: {
+              trigger: this.horizontalSection.nativeElement,
+              start: 'top 80%'
+            }
+          }
+        );
       }
+      
+      return () => {};
     });
-
-    pinTl.to(this.pinBg.nativeElement, { scale: 1.1, ease: 'none', duration: 1 }, 0)
-         .to(this.pinText1.nativeElement, { opacity: 0, y: -50, duration: 0.4 }, 0.1)
-         .fromTo(this.pinText2.nativeElement, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.4 }, 0.4);
-
-    // 5. Horizontal Scroll Section (THE WOW FACTOR)
-    // Calculamos cuánto tenemos que desplazar el contenedor a la izquierda
-    const container = this.horizontalContainer.nativeElement;
-    
-    // Wait for layout to settle to calculate width
-    const getScrollAmount = () => -(container.scrollWidth - window.innerWidth);
-    
-    const horizontalTl = gsap.to(container, {
-      x: getScrollAmount,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: this.horizontalSection.nativeElement,
-        start: 'top top',
-        end: () => `+=${container.scrollWidth}`, // Scroll height equals width of panels
-        pin: true,
-        scrub: 1, // Smooth scrub
-        invalidateOnRefresh: true // Recalculate on resize
-      }
-    });
-
-    // Parallax on images INSIDE horizontal scroll
-    const parallaxImages = this.el.nativeElement.querySelectorAll('.treatment-image');
-    parallaxImages.forEach((img: HTMLElement) => {
-      gsap.to(img, {
-        backgroundPosition: '100% 50%',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: this.horizontalSection.nativeElement,
-          start: 'top top',
-          end: () => `+=${container.scrollWidth}`,
-          scrub: true
-        }
-      });
-    });
-
-
-
   }
 
   ngOnDestroy() {

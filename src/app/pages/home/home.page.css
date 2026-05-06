@@ -338,8 +338,38 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .hero-title { font-size: 3.5rem; }
-  .elegant-text { font-size: 3rem; }
-  .horizontal-panel { width: 80vw; }
-  .intro-panel { width: 80vw; }
-  .hero-clip { clip-path: inset(0% 0% 0% 0%); } /* Disable initial clip on mobile for safety */
+  .elegant-text { font-size: 2.2rem; }
+  .highlight-text { font-size: 2.5rem; }
+  
+  .horizontal-section {
+    height: auto;
+    padding: 4rem 0;
+  }
+  
+  .horizontal-container {
+    height: auto;
+    flex-direction: column;
+    padding: 0 1.5rem;
+    width: 100%;
+  }
+
+  .horizontal-panel {
+    width: 100%;
+    height: auto;
+    min-height: 50vh;
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .intro-panel { 
+    width: 100%; 
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .trust-block {
+    padding: 4rem 0;
+  }
+
+  .hero-clip { clip-path: inset(0% 0% 0% 0%); }
 }
