@@ -165,6 +165,6 @@
   }
 }
 
-.image-placeholder { background-image: url('/images/about_salon.jpg'); background-size: cover; background-position: center; }
-.placeholder-owner1 { background-image: url('/images/team_owner1.jpg'); background-size: cover; background-position: center; }
-.placeholder-owner2 { background-image: url('/images/team_owner2.jpg'); background-size: cover; background-position: center; }
+.image-placeholder { background-image: url('/images/img_04.png'); background-size: cover; background-position: center; }
+.placeholder-owner1 { background-image: url('/images/img_01.png'); background-size: cover; background-position: center; }
+.placeholder-owner2 { background-image: url('/images/img_02.png'); background-size: cover; background-position: center; }

@@ -7,11 +7,15 @@
         <div class="hero-overlay"></div>
         <div class="container hero-container">
           <div class="hero-content" #heroContent>
-            <h1 class="hero-title text-reveal"><span class="reveal-inner">Belleza 100%</span></h1>
-            <h2 class="hero-subtitle text-reveal delay-1"><span class="reveal-inner">Tu retiro de belleza botánico.</span></h2>
-            <div class="hero-buttons text-reveal delay-2">
+            <h1 class="hero-title text-reveal"><span class="reveal-inner">Centro Estético Belleza 100%</span></h1>
+            <h2 class="hero-subtitle text-reveal delay-1"><span class="reveal-inner">Belleza, bienestar y cuidado personalizado en un espacio cercano y profesional.</span></h2>
+            <p class="hero-text text-reveal delay-2 text-white" style="margin: 0 auto 2.5rem; font-size: 1.2rem;"><span class="reveal-inner">Te cuidamos con tratamientos faciales, corporales, depilación, cejas, pestañas y uñas, siempre con atención cercana y adaptada a ti.</span></p>
+            <div class="hero-buttons text-reveal delay-3" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
               <span class="reveal-inner">
-                <a routerLink="/contacto" mat-flat-button color="primary" class="hero-btn">Reservar cita</a>
+                <a href="https://adtbeauty.net/centroesteticodebelleza100/online" target="_blank" mat-flat-button color="primary" class="hero-btn">Reservar cita online</a>
+              </span>
+              <span class="reveal-inner">
+                <a href="https://wa.me/34697981069" target="_blank" mat-stroked-button class="hero-btn white-btn" style="border-color: white; color: white;">Consultar por WhatsApp</a>
               </span>
             </div>
           </div>
@@ -23,7 +27,7 @@
   <!-- Story Section 1 -->
   <section class="story-section bg-dark text-center" #story1>
     <div class="container">
-      <h2 class="elegant-text highlight text-white" #storyText1>No es solo tu piel...</h2>
+      <h2 class="elegant-text highlight" style="color: var(--color-text-dark);" #storyText1>No es solo tu piel...</h2>
       <h3 class="sub-elegant-text mt-4 text-primary" #storyText2>es cómo te sientes cuando te miras.</h3>
     </div>
   </section>
@@ -67,71 +71,32 @@
     </div>
   </section>
 
-  <!-- Horizontal Scroll Section (Tratamientos) -->
-  <section class="horizontal-section" #horizontalSection>
-    <div class="horizontal-container" #horizontalContainer>
-      
-      <!-- Panel de Título -->
-      <div class="horizontal-panel intro-panel">
-        <h2 class="elegant-text">El Arte de<br>Cuidarte</h2>
-        <p class="panel-desc">Desliza para descubrir nuestros tratamientos estrella diseñados en exclusiva para ti.</p>
-      </div>
 
-      <!-- Paneles de Tratamientos -->
-      <div class="horizontal-panel treatment-panel">
-        <div class="treatment-card-premium">
-          <div class="treatment-image placeholder-facial" #parallaxImage1></div>
-          <div class="treatment-content">
-            <h3>Higiene Profunda</h3>
-            <p>Purifica y oxigena tu rostro.</p>
-            <span class="explore-btn">Descubrir</span>
-          </div>
+  <!-- Nuestro Espacio Section -->
+  <section class="about-space-section section-padding bg-light">
+    <div class="container">
+      <div class="space-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+        <div class="space-content">
+          <h2 class="elegant-text">Un espacio pensado<br>para cuidarte</h2>
+          <p style="font-size: 1.1rem; margin-top: 1.5rem; color: var(--color-text-dark);">
+            En Belleza 100% queremos que cada visita sea un momento de calma, confianza y cuidado. Trabajamos con atención personalizada para que te sientas cómoda desde que entras hasta que terminas tu tratamiento.
+          </p>
         </div>
+        <div class="space-image-wrapper" style="background-image: url('/images/img_05.png'); background-size: cover; background-position: center; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden;"></div>
       </div>
-
-      <div class="horizontal-panel treatment-panel">
-        <div class="treatment-card-premium">
-          <div class="treatment-image placeholder-corporal" #parallaxImage2></div>
-          <div class="treatment-content">
-            <h3>Presoterapia</h3>
-            <p>Drenaje linfático y bienestar total.</p>
-            <span class="explore-btn">Descubrir</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="horizontal-panel treatment-panel">
-        <div class="treatment-card-premium">
-          <div class="treatment-image placeholder-cejas" #parallaxImage3></div>
-          <div class="treatment-content">
-            <h3>Mirada Perfecta</h3>
-            <p>Microblading y laminado de cejas.</p>
-            <span class="explore-btn">Descubrir</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="horizontal-panel treatment-panel">
-        <div class="treatment-card-premium">
-          <div class="treatment-image placeholder-depilacion" #parallaxImage4></div>
-          <div class="treatment-content">
-            <h3>Depilación Láser</h3>
-            <p>Tecnología indolora y definitiva.</p>
-            <span class="explore-btn">Descubrir</span>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- Call to Action Final -->
+  <!-- Call to Action Final (Reserva tu cita) -->
   <section class="cta-section section-padding bg-secondary" #ctaSection>
-    <div class="container text-center text-white">
+    <div class="container text-center text-dark">
       <div class="cta-box">
-        <h2 class="text-white">¿Lista para tu momento?</h2>
-        <p>Hablemos directamente por WhatsApp y diseñemos tu plan de belleza.</p>
-        <a routerLink="/contacto" mat-flat-button color="primary" class="mt-4 hero-btn">Iniciar conversación</a>
+        <h2 style="color: var(--color-text-dark);">Reserva tu momento de cuidado</h2>
+        <p style="color: var(--color-text-dark);">Elige tu cita online de forma sencilla o escríbenos por WhatsApp si necesitas que te asesoremos.</p>
+        <div class="cta-buttons" style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+          <a href="https://adtbeauty.net/centroesteticodebelleza100/online" target="_blank" mat-flat-button color="primary" class="hero-btn">Reservar cita online</a>
+          <a href="https://wa.me/34697981069" target="_blank" mat-stroked-button color="primary" class="hero-btn" style="background-color: transparent;">Hablar por WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>

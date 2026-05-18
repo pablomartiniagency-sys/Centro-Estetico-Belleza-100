@@ -25,9 +25,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
   @ViewChild('pinText1') pinText1!: ElementRef;
   @ViewChild('pinText2') pinText2!: ElementRef;
   
-  @ViewChild('horizontalSection') horizontalSection!: ElementRef;
-  @ViewChild('horizontalContainer') horizontalContainer!: ElementRef;
-  
+
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private el: ElementRef) {}
 
   ngAfterViewInit() {
@@ -140,52 +138,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
         );
       }
 
-      // 5. Horizontal Scroll Section
-      if (isDesktop) {
-        const container = this.horizontalContainer.nativeElement;
-        const getScrollAmount = () => -(container.scrollWidth - window.innerWidth);
-        
-        gsap.to(container, {
-          x: getScrollAmount,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: this.horizontalSection.nativeElement,
-            start: 'top top',
-            end: () => `+=${container.scrollWidth}`, 
-            pin: true,
-            scrub: 1,
-            invalidateOnRefresh: true
-          }
-        });
 
-        const parallaxImages = this.el.nativeElement.querySelectorAll('.treatment-image');
-        parallaxImages.forEach((img: HTMLElement) => {
-          gsap.to(img, {
-            backgroundPosition: '100% 50%',
-            ease: 'none',
-            scrollTrigger: {
-              trigger: this.horizontalSection.nativeElement,
-              start: 'top top',
-              end: () => `+=${container.scrollWidth}`,
-              scrub: true
-            }
-          });
-        });
-      } else {
-        gsap.set(this.horizontalContainer.nativeElement, { clearProps: "all" });
-        const panels = this.el.nativeElement.querySelectorAll('.horizontal-panel');
-        gsap.fromTo(panels, 
-          { y: 50, opacity: 0 },
-          {
-            y: 0, opacity: 1, stagger: 0.2, duration: 0.8, ease: 'power2.out',
-            scrollTrigger: {
-              trigger: this.horizontalSection.nativeElement,
-              start: 'top 80%'
-            }
-          }
-        );
-      }
-      
       return () => {};
     });
   }

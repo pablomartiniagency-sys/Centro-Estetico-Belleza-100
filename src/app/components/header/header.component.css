@@ -12,7 +12,7 @@
 .header.scrolled {
   padding: 0.5rem 0;
   border-bottom-color: var(--color-border);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .header-container {
@@ -29,7 +29,7 @@
 .logo-title {
   font-family: var(--font-heading);
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-primary-dark);
   line-height: 1.1;
 }

@@ -33,18 +33,18 @@ html {
   --mdc-outlined-button-outline-color: var(--color-primary) !important;
 }
 :root {
-  /* Colors - Ultra Premium Botanical Luxe */
-  --color-primary: #9B8262; /* Taupe/Dorado mate */
+  /* Colors - Ultra Premium Nude/Beige Aesthetics */
+  --color-primary: #9B8262; /* Taupe/Dorado mate (Mantenemos como detalle elegante) */
   --color-primary-dark: #7a6549;
-  --color-secondary: #4A5D4E; /* Verde Salvia/Oliva */
-  --color-secondary-light: #6b8270;
+  --color-secondary: #E8E2D9; /* Beige claro / Nude en lugar de Verde oscuro */
+  --color-secondary-light: #F5EFEB; /* Crema suave */
   
   --color-bg-light: #F9F7F3; /* Alabastro sedoso */
   --color-bg-white: #FFFFFF;
-  --color-bg-dark: #1A1D1A; /* Carbón oscuro (Casi negro) */
+  --color-bg-dark: #DFD5C8; /* Marrón muy claro/Beige en lugar de oscuro/casi negro */
   
-  --color-text-dark: #1A1D1A; /* Carbón para textos */
-  --color-text-light: #6d756d; /* Gris verdoso suave */
+  --color-text-dark: #2B2522; /* Marrón oscuro cálido en lugar de gris oscuro */
+  --color-text-light: #7A7268; /* Gris cálido / Nude apagado */
   --color-border: #E8E5DF;
 
   /* Typography */

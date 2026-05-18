@@ -93,9 +93,9 @@
   }
 }
 
-.placeholder-facial { background-image: url('/images/treat_facial.jpg'); background-size: cover; background-position: center; }
-.placeholder-corporal { background-image: url('/images/treat_corporal.jpg'); background-size: cover; background-position: center; }
-.placeholder-depilacion { background-image: url('/images/treat_depilacion.jpg'); background-size: cover; background-position: center; }
-.placeholder-cejas { background-image: url('/images/treat_cejas.jpg'); background-size: cover; background-position: center; }
-.placeholder-manicura { background-image: url('/images/treat_manicura.jpg'); background-size: cover; background-position: center; }
-.placeholder-masaje { background-image: url('/images/treat_masaje.jpg'); background-size: cover; background-position: center; }
+.placeholder-facial { background-image: url('/images/img_01.png'); background-size: cover; background-position: center; }
+.placeholder-corporal { background-image: url('/images/ai_tratamiento_corporal.png'); background-size: cover; background-position: center; }
+.placeholder-depilacion { background-image: url('/images/img_02.png'); background-size: cover; background-position: top center; }
+.placeholder-cejas { background-image: url('/images/img_03.png'); background-size: cover; background-position: center; }
+.placeholder-manicura { background-image: url('/images/img_06.png'); background-size: cover; background-position: top center; }
+.placeholder-masaje { background-image: url('/images/ai_masaje_bienestar.png'); background-size: cover; background-position: center; }

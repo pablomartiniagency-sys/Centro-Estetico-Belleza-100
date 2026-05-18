@@ -30,7 +30,7 @@
 }
 
 .hero {
-  background-image: url('/images/hero_bg.jpg');
+  background-image: url('/images/img_04.png');
   background-size: cover;
   background-position: center;
   height: 100%;
@@ -45,7 +45,7 @@
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(rgba(26, 29, 26, 0.4), rgba(26, 29, 26, 0.7));
+  background: rgba(26, 29, 26, 0.5); /* Solid overlay to improve contrast and remove vignette */
 }
 
 .hero-container {
@@ -92,11 +92,11 @@
 
 /* Story Sections */
 .story-section {
-  min-height: 60vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6rem 0;
+  padding: 4rem 0;
 }
 
 .story-section-pin {
@@ -114,7 +114,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/about_salon.jpg');
+  background-image: url('/images/img_05.png');
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -178,7 +178,7 @@
 }
 
 .trust-card h3 {
-  color: var(--color-secondary);
+  color: var(--color-primary-dark);
   font-family: var(--font-heading);
   font-size: 1.8rem;
   margin-bottom: 1rem;
@@ -190,91 +190,7 @@
   margin-bottom: 1.5rem;
 }
 
-/* Horizontal Scroll Section */
-.horizontal-section {
-  width: 100vw;
-  height: 100vh; /* Fixed height for pinning */
-  position: relative;
-  overflow: hidden;
-  background-color: var(--color-bg-light);
-}
 
-.horizontal-container {
-  display: flex;
-  height: 100vh;
-  width: fit-content;
-  align-items: center;
-  padding: 0 10vw;
-}
-
-.horizontal-panel {
-  width: 40vw; /* Width of each panel */
-  height: 60vh;
-  flex-shrink: 0;
-  margin-right: 5vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.intro-panel {
-  width: 30vw;
-}
-
-.intro-panel .panel-desc {
-  font-family: var(--font-body);
-  font-size: 1.2rem;
-  color: var(--color-text-light);
-  margin-top: 1rem;
-}
-
-.treatment-card-premium {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.treatment-image {
-  flex-grow: 1;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.2); /* For parallax inside */
-}
-
-.treatment-content {
-  background: var(--color-bg-white);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-top: 4px solid var(--color-primary);
-}
-
-.treatment-content h3 {
-  font-size: 1.5rem;
-  color: var(--color-text-dark);
-  font-family: var(--font-heading);
-}
-
-.treatment-content p {
-  color: var(--color-text-light);
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.explore-btn {
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  color: var(--color-primary);
-  font-weight: 600;
-  cursor: pointer;
-}
 
 /* Testimonials */
 .testimonials {
@@ -329,43 +245,14 @@
   opacity: 0.9;
 }
 
-/* Placeholders */
-.placeholder-facial { background-image: url('/images/treat_facial.jpg'); }
-.placeholder-corporal { background-image: url('/images/treat_corporal.jpg'); }
-.placeholder-depilacion { background-image: url('/images/treat_depilacion.jpg'); }
-.placeholder-cejas { background-image: url('/images/treat_cejas.jpg'); }
+/* Placeholders eliminados ya que ahora usamos <img> */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .hero-title { font-size: 3.5rem; }
   .elegant-text { font-size: 2.2rem; }
   .highlight-text { font-size: 2.5rem; }
-  
-  .horizontal-section {
-    height: auto;
-    padding: 4rem 0;
-  }
-  
-  .horizontal-container {
-    height: auto;
-    flex-direction: column;
-    padding: 0 1.5rem;
-    width: 100%;
-  }
 
-  .horizontal-panel {
-    width: 100%;
-    height: auto;
-    min-height: 50vh;
-    margin-right: 0;
-    margin-bottom: 2rem;
-  }
-
-  .intro-panel { 
-    width: 100%; 
-    text-align: center;
-    margin-bottom: 4rem;
-  }
   
   .trust-block {
     padding: 4rem 0;
