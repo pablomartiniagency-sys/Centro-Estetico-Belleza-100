@@ -52,14 +52,16 @@
 
 /* Team Section */
 .team-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
   gap: 4rem;
   max-width: 900px;
   margin: 0 auto;
 }
 
 .team-card {
+  width: 100%;
+  max-width: 500px;
   background: var(--color-bg-white);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -80,13 +82,7 @@
   justify-content: center;
 }
 
-.team-image::after {
-  content: 'Especialista';
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  color: var(--color-text-dark);
-  opacity: 0.5;
-}
+
 
 .team-info {
   padding: 2rem;
@@ -166,5 +162,5 @@
 }
 
 .image-placeholder { background-image: url('/images/img_04.png'); background-size: cover; background-position: center; }
-.placeholder-owner1 { background-image: url('/images/img_01.png'); background-size: cover; background-position: center; }
-.placeholder-owner2 { background-image: url('/images/img_02.png'); background-size: cover; background-position: center; }
+.placeholder-owner1 { background-image: url('/images/img_06.png'); background-size: cover; background-position: top center; }
+.placeholder-owner2 { background-image: url('/images/img_02.png'); background-size: cover; background-position: top center; }
