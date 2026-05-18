@@ -52,14 +52,16 @@
 
 /* Team Section */
 .team-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
   gap: 4rem;
   max-width: 900px;
   margin: 0 auto;
 }
 
 .team-card {
+  width: 100%;
+  max-width: 500px;
   background: var(--color-bg-white);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -169,9 +171,9 @@
 }
 
 .placeholder-owner1 {
-  background-image: url('/images/team_owner1.jpg');
+  background-image: url('/images/img_06.png');
   background-size: cover;
-  background-position: center;
+  background-position: top center;
 }
 
 .placeholder-owner2 {
