@@ -52,16 +52,14 @@
 
 /* Team Section */
 .team-grid {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 4rem;
   max-width: 900px;
   margin: 0 auto;
 }
 
 .team-card {
-  width: 100%;
-  max-width: 500px;
   background: var(--color-bg-white);
   border-radius: var(--radius-md);
   overflow: hidden;
