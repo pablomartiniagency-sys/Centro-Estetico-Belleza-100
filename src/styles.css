@@ -108,6 +108,15 @@ a {
   transition: color var(--transition-fast);
 }
 
+/* Accessibility Focus States */
+a:focus-visible, 
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 ul {
   list-style: none;
 }
