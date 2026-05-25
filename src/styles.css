@@ -13,6 +13,10 @@ html {
   
   /* Redondear un poco menos los botones para un look más elegante/editorial */
   --mdc-shape-small: 4px;
+
+  /* Strict horizontal scroll lock for iOS */
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Fuerza el color primario en botones Material por si el tema preconstruido pisa las variables */
@@ -48,8 +52,8 @@ html {
   --color-border: #E8E5DF;
 
   /* Typography */
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
@@ -80,6 +84,9 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -137,4 +144,46 @@ img {
 /* Utility for smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Custom Premium Button Styles */
+.custom-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  height: 48px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.btn-premium {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-bg-white) !important;
+  box-shadow: 0 4px 15px rgba(155, 130, 98, 0.3);
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+.btn-premium:hover {
+  box-shadow: 0 8px 25px rgba(155, 130, 98, 0.5);
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-secondary-light) !important;
+  border: 1px solid var(--color-secondary-light);
+}
+
+.btn-outline:hover {
+  background: rgba(245, 239, 235, 0.1); /* transparent version of secondary-light */
+  transform: translateY(-2px);
 }

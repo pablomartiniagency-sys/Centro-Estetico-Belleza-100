@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { EnviaCorreoService } from '../../../services/envia-correo.service';
 
 type ModalView = 'options' | 'form' | 'loading' | 'success';
@@ -8,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-reservation-modal',
-  imports: [ReactiveFormsModule, MatButtonModule],
+  imports: [ReactiveFormsModule, MatButtonModule, RouterLink],
   templateUrl: './reservation-modal.component.html',
   styleUrl: './reservation-modal.component.css'
 })
@@ -28,7 +29,8 @@ export class ReservationModalComponent {
       telefono: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       tratamientoDeseado: [''],
-      mensaje: ['']
+      mensaje: [''],
+      privacidad: [false, Validators.requiredTrue]
     });
   }
 

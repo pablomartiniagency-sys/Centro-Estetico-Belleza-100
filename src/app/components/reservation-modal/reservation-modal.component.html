@@ -8,7 +8,7 @@
       <p class="modal-subtitle">Elige la opción que te resulte más cómoda para reservar tu cita.</p>
 
       <div class="modal-options">
-        <a href="https://wa.me/34000000000" target="_blank" class="modal-option-card whatsapp-card" (click)="onClose()">
+        <a href="https://wa.me/34697981069" target="_blank" class="modal-option-card whatsapp-card" (click)="onClose()">
           <span class="modal-icon">💬</span>
           <h3>WhatsApp</h3>
           <p>Respuesta rápida e inmediata</p>
@@ -56,7 +56,14 @@
           <textarea id="mensaje" formControlName="mensaje" rows="3" placeholder="¿En qué te podemos ayudar?"></textarea>
         </div>
 
-        <button type="submit" mat-flat-button color="primary" class="submit-btn">Enviar solicitud</button>
+        <div class="form-group checkbox-group" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-top: 1rem; margin-bottom: 1.5rem; text-align: left;">
+          <input type="checkbox" id="privacidad_modal" formControlName="privacidad" style="margin-top: 0.3rem;">
+          <label for="privacidad_modal" style="font-size: 0.9rem; color: var(--color-text-light);">
+            He leído y acepto la <a routerLink="/politica-privacidad" target="_blank" style="color: var(--color-primary); text-decoration: underline;">Política de Privacidad</a>.
+          </label>
+        </div>
+
+        <button type="submit" mat-flat-button color="primary" class="submit-btn" [disabled]="contactForm.invalid">Enviar solicitud</button>
       </form>
     }
 

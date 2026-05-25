@@ -1,6 +1,5 @@
 import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, ViewChildren, QueryList, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatButtonModule, RouterLink],
+  imports: [MatButtonModule],
   templateUrl: './home.page.html',
   styleUrl: './home.page.css'
 })

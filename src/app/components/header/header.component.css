@@ -5,14 +5,13 @@
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
-  transition: all var(--transition-normal);
-  padding: 1rem 0;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  padding: 0.5rem 0;
 }
 
 .header.scrolled {
-  padding: 0.5rem 0;
   border-bottom-color: var(--color-border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .header-container {
@@ -105,7 +104,7 @@
   .nav {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 80%;
     max-width: 300px;
     height: 100vh;
@@ -114,11 +113,12 @@
     justify-content: center;
     padding: 2rem;
     box-shadow: -5px 0 15px rgba(0,0,0,0.05);
-    transition: right var(--transition-normal);
+    transform: translateX(100%);
+    transition: transform var(--transition-normal);
   }
 
   .nav.open {
-    right: 0;
+    transform: translateX(0);
   }
 
   .nav-list {

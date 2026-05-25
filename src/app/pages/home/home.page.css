@@ -45,7 +45,7 @@
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(26, 29, 26, 0.5); /* Solid overlay to improve contrast and remove vignette */
+  background: rgba(43, 37, 34, 0.55); /* Warm, dark brown overlay for luxury contrast */
 }
 
 .hero-container {
@@ -69,11 +69,19 @@
 }
 
 .hero-title {
-  font-size: 6rem;
-  color: var(--color-bg-light);
+  font-size: 3.5rem;
+  color: var(--color-secondary-light);
   margin-bottom: 1rem;
-  line-height: 1;
+  line-height: 1.1;
   font-weight: 300;
+  text-shadow: 0 4px 15px rgba(20, 15, 12, 0.6);
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 6rem;
+    line-height: 1;
+  }
 }
 
 .hero-subtitle {
@@ -82,6 +90,7 @@
   font-weight: 300;
   color: var(--color-primary);
   margin-bottom: 2.5rem;
+  text-shadow: 0 2px 10px rgba(20, 15, 12, 0.6);
 }
 
 .magnetic-btn {
@@ -127,6 +136,25 @@
   z-index: 1;
 }
 
+.space-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .space-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.about-space-section {
+  position: relative;
+  z-index: 10;
+}
+
 .pin-content {
   position: relative;
   z-index: 2;
@@ -135,21 +163,33 @@
 }
 
 .elegant-text {
-  font-size: 4.5rem;
+  font-size: 2.5rem;
   font-family: var(--font-heading);
   font-weight: 300;
   line-height: 1.1;
 }
 
 .sub-elegant-text {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-family: var(--font-body);
   font-weight: 300;
 }
 
 .highlight-text {
-  font-size: 4rem;
+  font-size: 2.2rem;
   margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .elegant-text {
+    font-size: 4.5rem;
+  }
+  .sub-elegant-text {
+    font-size: 2.2rem;
+  }
+  .highlight-text {
+    font-size: 4rem;
+  }
 }
 
 .signature {

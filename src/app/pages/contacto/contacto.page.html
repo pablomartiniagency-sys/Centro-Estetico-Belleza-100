@@ -1,12 +1,19 @@
 <div class="contact-page">
-  
-  <!-- Marketing Copy -->
-  <section class="marketing-section section-padding">
-    <div class="container text-center">
-      <div class="marketing-content">
-        <h2>Tu momento es ahora</h2>
-        <p class="large-text">
-          En Centro Estético Belleza 100% sabemos que el ritmo diario apenas deja tiempo para una misma. Por eso, hemos diseñado un espacio pensado exclusivamente para tu desconexión, cuidado y bienestar. Un trato humano, resultados reales y el tiempo que te mereces.
+
+  <!-- Elegant Contact Header without massive photo -->
+  <section class="marketing-section"
+    style="background-color: var(--color-secondary-light); padding: 5rem 0; text-align: center;">
+    <div class="container">
+      <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+        <div style="background: white; padding: 1.5rem; border-radius: 50%; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: inline-flex; align-items: center; justify-content: center; width: 140px; height: 140px; overflow: hidden;">
+          <img src="/images/logo.png" alt="Centro Estético Belleza 100%" style="width: 140%; height: 140%; object-fit: contain;">
+        </div>
+      </div>
+      <div class="marketing-content" style="max-width: 700px; margin: 0 auto;">
+        <h2 style="font-size: 3rem; margin-bottom: 1rem; color: var(--color-primary-dark);">Estemos en contacto</h2>
+        <p class="large-text" style="color: var(--color-text-dark); line-height: 1.8;">
+          Sabemos que el ritmo diario apenas deja tiempo para una misma. Ven a nuestro espacio pensado exclusivamente
+          para tu desconexión, cuidado y bienestar. Un trato humano, resultados reales y el tiempo que te mereces.
         </p>
       </div>
     </div>
@@ -16,12 +23,12 @@
   <section class="contact-content-section section-padding bg-light">
     <div class="container">
       <div class="contact-grid">
-        
+
         <!-- Info Column -->
         <div class="contact-info-column">
           <h3>Información de Contacto</h3>
           <p class="contact-intro">Ven a visitarnos o escríbenos directamente. Estaremos encantadas de atenderte.</p>
-          
+
           <ul class="contact-list">
             <li>
               <div class="icon-wrapper">📍</div>
@@ -46,8 +53,10 @@
             </li>
           </ul>
 
-          <div class="map-container" style="height: 300px; width: 100%; border-radius: var(--radius-md); overflow: hidden; margin-top: 2rem;">
-            <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Centro%20Est%C3%A9tico%20Belleza%20100%25%20C.%20Periana%20Fuengirola&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
+          <div class="map-container"
+            style="height: 300px; width: 100%; border-radius: var(--radius-md); overflow: hidden; margin-top: 2rem;">
+            <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen
+              src="https://maps.google.com/maps?q=Centro%20Est%C3%A9tico%20Belleza%20100%25%20C.%20Periana%20Fuengirola&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
           </div>
         </div>
 
@@ -58,53 +67,64 @@
             <p class="form-intro">Déjanos tus datos y te responderemos lo antes posible.</p>
 
             @if (formStatus === 'idle') {
-              <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-                <div class="form-group">
-                  <label for="nombre">Nombre completo</label>
-                  <input type="text" id="nombre" formControlName="nombre" placeholder="Tu nombre"
-                         [class.invalid]="contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched">
-                </div>
-                
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" formControlName="telefono" placeholder="Ej. 600 000 000"
-                           [class.invalid]="contactForm.get('telefono')?.invalid && contactForm.get('telefono')?.touched">
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" formControlName="email" placeholder="tu@email.com"
-                           [class.invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-                  </div>
-                </div>
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+              <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" formControlName="nombre" placeholder="Tu nombre"
+                  [class.invalid]="contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched">
+              </div>
 
+              <div class="form-row">
                 <div class="form-group">
-                  <label for="tratamientoDeseado">¿Te interesa algún tratamiento en particular?</label>
-                  <input type="text" id="tratamientoDeseado" formControlName="tratamientoDeseado" placeholder="Opcional">
+                  <label for="telefono">Teléfono</label>
+                  <input type="tel" id="telefono" formControlName="telefono" placeholder="Ej. 600 000 000"
+                    [class.invalid]="contactForm.get('telefono')?.invalid && contactForm.get('telefono')?.touched">
                 </div>
-
                 <div class="form-group">
-                  <label for="mensaje">¿En qué podemos ayudarte?</label>
-                  <textarea id="mensaje" formControlName="mensaje" rows="4" placeholder="Escribe aquí tu mensaje..."></textarea>
+                  <label for="email">Email</label>
+                  <input type="email" id="email" formControlName="email" placeholder="tu@email.com"
+                    [class.invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
                 </div>
+              </div>
 
-                <button type="submit" mat-flat-button color="primary" class="submit-btn">Enviar mensaje</button>
-              </form>
+              <div class="form-group">
+                <label for="tratamientoDeseado">¿Te interesa algún tratamiento en particular?</label>
+                <input type="text" id="tratamientoDeseado" formControlName="tratamientoDeseado" placeholder="Opcional">
+              </div>
+
+              <div class="form-group">
+                <label for="mensaje">¿En qué podemos ayudarte?</label>
+                <textarea id="mensaje" formControlName="mensaje" rows="4"
+                  placeholder="Escribe aquí tu mensaje..."></textarea>
+              </div>
+
+              <div class="form-group checkbox-group"
+                style="display: flex; align-items: flex-start; gap: 0.5rem; margin-top: 1rem; margin-bottom: 1.5rem; text-align: left;">
+                <input type="checkbox" id="privacidad" formControlName="privacidad" style="margin-top: 0.3rem;">
+                <label for="privacidad" style="font-size: 0.9rem; color: var(--color-text-light);">
+                  He leído y acepto la <a routerLink="/politica-privacidad" target="_blank"
+                    style="color: var(--color-primary); text-decoration: underline;">Política de Privacidad</a>.
+                </label>
+              </div>
+
+              <button type="submit" mat-flat-button color="primary" class="submit-btn"
+                [disabled]="contactForm.invalid">Enviar mensaje</button>
+            </form>
             }
 
             @if (formStatus === 'loading') {
-              <div class="status-container">
-                <div class="spinner"></div>
-                <h4>Enviando mensaje...</h4>
-              </div>
+            <div class="status-container">
+              <div class="spinner"></div>
+              <h4>Enviando mensaje...</h4>
+            </div>
             }
 
             @if (formStatus === 'success') {
-              <div class="status-container success-state">
-                <span class="status-icon">✨</span>
-                <h4>¡Mensaje enviado con éxito!</h4>
-                <p>Gracias por contactar con nosotras. Te responderemos muy pronto.</p>
-              </div>
+            <div class="status-container success-state">
+              <span class="status-icon">✨</span>
+              <h4>¡Mensaje enviado con éxito!</h4>
+              <p>Gracias por contactar con nosotras. Te responderemos muy pronto.</p>
+            </div>
             }
           </div>
         </div>

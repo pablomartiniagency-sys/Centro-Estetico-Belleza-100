@@ -1,10 +1,11 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
-      
+
       <!-- Brand & Description -->
       <div class="footer-brand">
-        <h3 class="footer-title">Belleza 100%</h3>
+        <img src="/images/logo.png" alt="Centro Estético Belleza 100%" class="footer-logo"
+          style="height: 150px; width: auto; object-fit: contain; margin-bottom: 1.5rem; display: block;">
         <p class="footer-text">
           Belleza 100%, tu centro estético de confianza para cuidarte con calma, cercanía y profesionalidad.
         </p>
@@ -39,11 +40,12 @@
           </li>
           <li>
             <span class="icon">💻</span>
-            <a href="https://adtbeauty.net/centroesteticodebelleza100/online" target="_blank" class="footer-highlight">Reservar cita online</a>
+            <a href="https://adtbeauty.net/centroesteticodebelleza100/online" target="_blank"
+              class="footer-highlight">Reservar cita online</a>
           </li>
         </ul>
       </div>
-      
+
       <!-- Redes Sociales -->
       <div class="footer-social">
         <h4 class="footer-subtitle">Síguenos</h4>
@@ -53,12 +55,17 @@
           <li><a href="https://www.tiktok.com/@belleza1oo?_r=1&_t=ZN-96DikuQOT14" target="_blank">TikTok</a></li>
         </ul>
       </div>
-      
+
     </div>
 
     <!-- Copyright -->
-    <div class="footer-bottom">
-      <p>&copy; 2026 Centro Estético Belleza 100%. Todos los derechos reservados.</p>
+    <div class="footer-bottom"
+      style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.05);">
+      <p style="margin: 0;">&copy; {{ currentYear }} Centro Estético Belleza 100%. Todos los derechos reservados.</p>
+      <div class="legal-links" style="display: flex; gap: 1.5rem; font-size: 0.9rem;">
+        <a routerLink="/politica-privacidad">Política de Privacidad</a>
+        <a routerLink="/politica-privacidad">Aviso Legal</a>
+      </div>
     </div>
   </div>
 </footer>
