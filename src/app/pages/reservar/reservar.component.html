@@ -2,7 +2,17 @@
   <div class="container">
     <div class="section-header text-center">
       <h2>Reserva tu cita en Belleza100</h2>
-      <p>Elige el tratamiento, selecciona el horario que mejor te venga y confirma tu cita en pocos pasos.</p>
+      <p *ngIf="!bookingSuccess">Elige el tratamiento y selecciona el horario que mejor te venga.</p>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="bookingSuccess" class="success-box text-center" style="padding: 4rem 2rem; background: #f0f7f4; border: 1px solid #cce5d9; border-radius: 8px;">
+      <h2 style="color: #2e7d32; margin-bottom: 1rem;">¡Reserva Confirmada!</h2>
+      <p style="font-size: 1.1rem; color: #333;">Gracias <strong>{{ clientName }}</strong>, hemos anotado tu cita para el <strong>{{ selectedDate | date:'longDate' }}</strong> a las <strong>{{ selectedSlot }}</strong>.</p>
+      <p style="color: #666; margin-top: 1rem;">Hemos enviado la reserva a la agenda de Carmen. Si necesitas cancelar o modificar, contacta con nosotros por WhatsApp.</p>
+      <div style="margin-top: 2rem;">
+        <a routerLink="/" mat-stroked-button color="primary">Volver al Inicio</a>
+      </div>
     </div>
 
     <!-- Carga -->
@@ -11,7 +21,7 @@
       <p style="margin-top: 1rem; color: var(--color-text-light);">Cargando tratamientos...</p>
     </div>
 
-    <div *ngIf="!loadingServices" class="booking-flow">
+    <div *ngIf="!loadingServices && !bookingSuccess" class="booking-flow">
       
       <!-- Paso 1: Elegir Categoría -->
       <div class="step-card" *ngIf="!selectedCategory">
@@ -45,7 +55,7 @@
       </div>
 
       <!-- Paso 3: Día y Hora -->
-      <div class="step-card" *ngIf="selectedService">
+      <div class="step-card" *ngIf="selectedService && !selectedSlot">
         <div class="back-nav">
           <button mat-button (click)="selectedService = null">← Volver a servicios</button>
         </div>
@@ -82,23 +92,30 @@
         </div>
       </div>
 
-      <!-- Paso 4: Confirmación (Auth Gate) -->
+      <!-- Paso 4: Confirmación Sin Sesión -->
       <div class="step-card" *ngIf="selectedSlot">
-        <h3>4. Confirmar cita</h3>
+        <div class="back-nav">
+          <button mat-button (click)="selectedSlot = null">← Volver a cambiar hora</button>
+        </div>
+        <h3>4. Completa tus datos</h3>
         <p>Reserva: <strong>{{ selectedService?.name }}</strong> el <strong>{{ selectedDate | date:'longDate' }}</strong> a las <strong>{{ selectedSlot }}</strong></p>
 
-        <div *ngIf="!user" class="auth-gate">
-          <p>Para confirmar tu cita necesitamos que inicies sesión de forma segura con tu cuenta de Google.</p>
-          <button mat-flat-button color="primary" class="google-btn" (click)="loginWithGoogle()">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
-            Continuar con Google
-          </button>
-        </div>
-
-        <div *ngIf="user" class="confirm-box">
-          <p>Has iniciado sesión como <strong>{{ user.email }}</strong></p>
-          <button mat-flat-button color="primary" class="confirm-btn" [disabled]="bookingInProgress" (click)="confirmBooking()">
-            {{ bookingInProgress ? 'Confirmando...' : 'Confirmar Reserva Definitiva' }}
+        <div class="form-container" style="max-width: 400px; margin: 1.5rem auto;">
+          <div style="margin-bottom: 1rem;">
+            <label style="display:block; margin-bottom: 0.5rem; font-weight: 500;">Nombre completo *</label>
+            <input type="text" [(ngModel)]="clientName" placeholder="Tu nombre" style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px;">
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <label style="display:block; margin-bottom: 0.5rem; font-weight: 500;">Teléfono (WhatsApp) *</label>
+            <input type="tel" [(ngModel)]="clientPhone" placeholder="Ej: 600123456" style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px;">
+          </div>
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display:block; margin-bottom: 0.5rem; font-weight: 500;">Email (Opcional)</label>
+            <input type="email" [(ngModel)]="clientEmail" placeholder="Tu email" style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px;">
+          </div>
+          
+          <button mat-flat-button color="primary" class="confirm-btn" style="width: 100%; padding: 1.5rem 0; font-size: 1.1rem;" [disabled]="bookingInProgress || !clientName || !clientPhone" (click)="confirmBooking()">
+            {{ bookingInProgress ? 'Confirmando...' : 'Confirmar Reserva' }}
           </button>
         </div>
       </div>

@@ -25,7 +25,7 @@
     "@fullcalendar/daygrid": "^6.1.21",
     "@fullcalendar/interaction": "^6.1.21",
     "@fullcalendar/timegrid": "^6.1.21",
-    "@supabase/supabase-js": "^2.110.0",
+    "googleapis": "^173.0.0",
     "gsap": "^3.15.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

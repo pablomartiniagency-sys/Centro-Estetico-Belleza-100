@@ -1,0 +1,42 @@
+[
+  {
+    "id": "facial_basico",
+    "name": "Higiene Facial Básica",
+    "category": "Facial",
+    "duration_min": 60,
+    "description": "Limpieza profunda con exfoliación, extracción y mascarilla calmante.",
+    "price_cents": 4000
+  },
+  {
+    "id": "facial_premium",
+    "name": "Tratamiento Facial Premium (Indiba)",
+    "category": "Facial",
+    "duration_min": 75,
+    "description": "Rejuvenecimiento facial con radiofrecuencia Indiba.",
+    "price_cents": 6500
+  },
+  {
+    "id": "corp_maderoterapia",
+    "name": "Maderoterapia Corporal",
+    "category": "Corporal",
+    "duration_min": 60,
+    "description": "Masaje remodelante intenso con instrumentos de madera.",
+    "price_cents": 5000
+  },
+  {
+    "id": "depilacion_cejas",
+    "name": "Diseño y Depilación de Cejas",
+    "category": "Depilación",
+    "duration_min": 15,
+    "description": "Diseño adaptado a tu rostro con pinzas o cera.",
+    "price_cents": 1200
+  },
+  {
+    "id": "unas_semi",
+    "name": "Manicura Semipermanente",
+    "category": "Uñas",
+    "duration_min": 45,
+    "description": "Esmaltado de larga duración con refuerzo opcional.",
+    "price_cents": 2500
+  }
+]
