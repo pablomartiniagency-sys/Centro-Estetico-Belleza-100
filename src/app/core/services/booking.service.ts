@@ -18,6 +18,6 @@ export class BookingService {
   constructor(private http: HttpClient) {}
 
   getServices(): Observable<ServiceItem[]> {
-    return this.http.get<ServiceItem[]>('/assets/data/services.json');
+    return this.http.get<ServiceItem[]>('/data/services.json');
   }
 }
