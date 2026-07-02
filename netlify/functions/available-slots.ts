@@ -1,11 +1,7 @@
 import { Handler } from '@netlify/functions';
 import { calendar, CALENDAR_ID } from './utils/gcal';
 
-// Business hours (Spanish Timezone - we do all calculations in local time for simplicity, then convert to UTC)
-const BUSINESS_HOURS = [
-  { start: '09:30', end: '13:30' },
-  { start: '16:15', end: '20:15' }
-];
+// Time calculations
 
 function addMinutes(timeStr: string, mins: number): string {
   const [h, m] = timeStr.split(':').map(Number);
@@ -71,10 +67,33 @@ export const handler: Handler = async (event) => {
       };
     });
 
+    // Determinar día de la semana para los horarios (0 = Domingo, 1 = Lunes... 5 = Viernes, 6 = Sábado)
+    const targetDate = new Date(`${date}T12:00:00+01:00`);
+    const dayOfWeek = targetDate.getDay();
+
+    let businessBlocks: {start: string, end: string}[] = [];
+    
+    if (dayOfWeek >= 1 && dayOfWeek <= 4) {
+      // Lunes a Jueves: 09:30-13:30 / 17:45-20:45
+      businessBlocks = [
+        { start: '09:30', end: '13:30' },
+        { start: '17:45', end: '20:45' }
+      ];
+    } else if (dayOfWeek === 5) {
+      // Viernes: 09:30-13:30 / 16:15-20:15
+      businessBlocks = [
+        { start: '09:30', end: '13:30' },
+        { start: '16:15', end: '20:15' }
+      ];
+    } else {
+      // Sábado y Domingo cerrado
+      return { statusCode: 200, body: JSON.stringify({ slots: [] }) };
+    }
+
     const slots: string[] = [];
     const interval = 15; // 15 min steps
 
-    BUSINESS_HOURS.forEach(block => {
+    businessBlocks.forEach(block => {
       let current = block.start;
       
       while (current < block.end) {
