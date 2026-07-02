@@ -1,24 +1,25 @@
 <div class="reservar-page section-padding bg-light">
   <div class="container">
     <div class="section-header text-center">
-      <h2>Reserva tu cita en Belleza100</h2>
-      <p *ngIf="!bookingSuccess">Elige el tratamiento y selecciona el horario que mejor te venga.</p>
+      <h2>Reserva tu momento Belleza100</h2>
+      <p *ngIf="!bookingSuccess">Selecciona tu tratamiento y el horario que prefieras.</p>
     </div>
 
     <!-- Success Message -->
-    <div *ngIf="bookingSuccess" class="success-box text-center" style="padding: 4rem 2rem; background: #f0f7f4; border: 1px solid #cce5d9; border-radius: 8px;">
-      <h2 style="color: #2e7d32; margin-bottom: 1rem;">¡Reserva Confirmada!</h2>
-      <p style="font-size: 1.1rem; color: #333;">Gracias <strong>{{ clientName }}</strong>, hemos anotado tu cita para el <strong>{{ selectedDate | date:'longDate' }}</strong> a las <strong>{{ selectedSlot }}</strong>.</p>
-      <p style="color: #666; margin-top: 1rem;">Hemos enviado la reserva a la agenda de Carmen. Si necesitas cancelar o modificar, contacta con nosotros por WhatsApp.</p>
-      <div style="margin-top: 2rem;">
-        <a routerLink="/" mat-stroked-button color="primary">Volver al Inicio</a>
+    <div *ngIf="bookingSuccess" class="success-box text-center">
+      <div class="success-icon">✨</div>
+      <h2 style="color: var(--color-primary-dark); margin-bottom: 1rem;">¡Reserva Confirmada!</h2>
+      <p style="font-size: 1.1rem; color: var(--color-text-dark);">Gracias <strong>{{ clientName }}</strong>, hemos anotado tu cita para el <strong>{{ selectedDate | date:'longDate' }}</strong> a las <strong>{{ selectedSlot }}</strong>.</p>
+      <p style="color: var(--color-text-light); margin-top: 1rem;">Hemos apuntado tu reserva en nuestra agenda. Si necesitas cancelar o modificar, escríbenos por WhatsApp.</p>
+      <div style="margin-top: 3rem;">
+        <a routerLink="/" class="confirm-action-btn" style="text-decoration: none; display: inline-block; width: auto; padding: 1rem 3rem;">Volver al Inicio</a>
       </div>
     </div>
 
     <!-- Carga -->
-    <div *ngIf="loadingServices" class="text-center" style="padding: 3rem;">
-      <mat-spinner style="margin: 0 auto;" diameter="40"></mat-spinner>
-      <p style="margin-top: 1rem; color: var(--color-text-light);">Cargando tratamientos...</p>
+    <div *ngIf="loadingServices" class="text-center" style="padding: 5rem 0;">
+      <mat-spinner style="margin: 0 auto;" diameter="50"></mat-spinner>
+      <p style="margin-top: 1.5rem; color: var(--color-text-light); font-family: var(--font-heading); font-size: 1.2rem;">Preparando tratamientos...</p>
     </div>
 
     <div *ngIf="!loadingServices && !bookingSuccess" class="booking-flow">
@@ -27,7 +28,7 @@
       <div class="step-card" *ngIf="!selectedCategory">
         <h3>1. ¿Qué tipo de tratamiento buscas?</h3>
         <div class="grid-buttons">
-          <button mat-stroked-button color="primary" class="big-btn" *ngFor="let cat of categories" (click)="selectCategory(cat)">
+          <button class="cat-btn" *ngFor="let cat of categories" (click)="selectCategory(cat)">
             {{ cat }}
           </button>
         </div>
@@ -36,31 +37,31 @@
       <!-- Paso 2: Elegir Servicio -->
       <div class="step-card" *ngIf="selectedCategory && !selectedService">
         <div class="back-nav">
-          <button mat-button (click)="selectedCategory = null">← Volver a categorías</button>
+          <button class="back-btn" (click)="selectedCategory = null">← Volver a categorías</button>
         </div>
         <h3>2. Selecciona el servicio ({{ selectedCategory }})</h3>
         
         <div class="services-list">
-          <mat-card *ngFor="let srv of services" [style.display]="srv.category === selectedCategory ? 'block' : 'none'" class="service-card" (click)="selectService(srv)">
-            <mat-card-content>
-              <h4>{{ srv.name }}</h4>
-              <p class="service-desc">{{ srv.description }}</p>
-              <div class="service-meta">
-                <span>⏱ {{ srv.duration_min }} min</span>
-                <span *ngIf="srv.price_cents">💰 {{ srv.price_cents / 100 | currency:'EUR' }}</span>
-              </div>
-            </mat-card-content>
-          </mat-card>
+          <div *ngFor="let srv of services" [style.display]="srv.category === selectedCategory ? 'block' : 'none'" class="service-card" (click)="selectService(srv)">
+            <h4>{{ srv.name }}</h4>
+            <p class="service-desc">{{ srv.description }}</p>
+            <div class="service-meta">
+              <span>⏱ {{ srv.duration_min }} min</span>
+              <span *ngIf="srv.price_cents">💰 {{ srv.price_cents / 100 | currency:'EUR' }}</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Paso 3: Día y Hora -->
       <div class="step-card" *ngIf="selectedService && !selectedSlot">
         <div class="back-nav">
-          <button mat-button (click)="selectedService = null">← Volver a servicios</button>
+          <button class="back-btn" (click)="selectedService = null">← Volver a tratamientos</button>
         </div>
         <h3>3. ¿Cuándo te viene bien?</h3>
-        <p class="selected-summary">Has elegido: <strong>{{ selectedService.name }}</strong> ({{ selectedService.duration_min }} min)</p>
+        <div class="selected-summary">
+          Has elegido: <strong>{{ selectedService.name }}</strong> ({{ selectedService.duration_min }} min)
+        </div>
 
         <div class="datetime-grid">
           <div class="calendar-wrapper">
@@ -77,12 +78,11 @@
             </div>
 
             <div *ngIf="!loadingSlots && availableSlots.length === 0" class="no-slots">
-              <p>No hay huecos disponibles este día. Por favor, elige otro.</p>
+              <p>No hay huecos disponibles para este día. Por favor, elige otro del calendario.</p>
             </div>
 
             <div *ngIf="!loadingSlots && availableSlots.length > 0" class="slots-grid">
-              <button mat-stroked-button *ngFor="let slot of availableSlots" 
-                      [color]="selectedSlot === slot ? 'primary' : ''"
+              <button class="slot-btn" *ngFor="let slot of availableSlots" 
                       [class.slot-selected]="selectedSlot === slot"
                       (click)="selectSlot(slot)">
                 {{ slot }}
@@ -95,27 +95,28 @@
       <!-- Paso 4: Confirmación Sin Sesión -->
       <div class="step-card" *ngIf="selectedSlot">
         <div class="back-nav">
-          <button mat-button (click)="selectedSlot = null">← Volver a cambiar hora</button>
+          <button class="back-btn" (click)="selectedSlot = null">← Volver al calendario</button>
         </div>
         <h3>4. Completa tus datos</h3>
-        <p>Reserva: <strong>{{ selectedService?.name }}</strong> el <strong>{{ selectedDate | date:'longDate' }}</strong> a las <strong>{{ selectedSlot }}</strong></p>
+        <p class="text-center" style="margin-bottom: 0;">Reserva: <strong>{{ selectedService?.name }}</strong></p>
+        <p class="text-center" style="margin-bottom: 1rem; color: var(--color-primary-dark);">El <strong>{{ selectedDate | date:'longDate' }}</strong> a las <strong>{{ selectedSlot }}</strong></p>
 
-        <div class="form-container" style="max-width: 400px; margin: 1.5rem auto;">
-          <div style="margin-bottom: 1rem;">
-            <label style="display:block; margin-bottom: 0.5rem; font-weight: 500;">Nombre completo *</label>
-            <input type="text" [(ngModel)]="clientName" placeholder="Tu nombre" style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px;">
-          </div>
-          <div style="margin-bottom: 1rem;">
-            <label style="display:block; margin-bottom: 0.5rem; font-weight: 500;">Teléfono (WhatsApp) *</label>
-            <input type="tel" [(ngModel)]="clientPhone" placeholder="Ej: 600123456" style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px;">
+        <div class="form-container">
+          <div style="margin-bottom: 1.5rem;">
+            <label class="input-label">Nombre completo *</label>
+            <input type="text" class="custom-input" [(ngModel)]="clientName" placeholder="Tu nombre">
           </div>
           <div style="margin-bottom: 1.5rem;">
-            <label style="display:block; margin-bottom: 0.5rem; font-weight: 500;">Email (Opcional)</label>
-            <input type="email" [(ngModel)]="clientEmail" placeholder="Tu email" style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px;">
+            <label class="input-label">Teléfono (WhatsApp) *</label>
+            <input type="tel" class="custom-input" [(ngModel)]="clientPhone" placeholder="Ej: 600 123 456">
+          </div>
+          <div style="margin-bottom: 2.5rem;">
+            <label class="input-label">Email (Opcional)</label>
+            <input type="email" class="custom-input" [(ngModel)]="clientEmail" placeholder="Tu correo electrónico">
           </div>
           
-          <button mat-flat-button color="primary" class="confirm-btn" style="width: 100%; padding: 1.5rem 0; font-size: 1.1rem;" [disabled]="bookingInProgress || !clientName || !clientPhone" (click)="confirmBooking()">
-            {{ bookingInProgress ? 'Confirmando...' : 'Confirmar Reserva' }}
+          <button class="confirm-action-btn" [disabled]="bookingInProgress || !clientName || !clientPhone" (click)="confirmBooking()">
+            {{ bookingInProgress ? 'Procesando tu reserva...' : 'Confirmar Reserva' }}
           </button>
         </div>
       </div>
