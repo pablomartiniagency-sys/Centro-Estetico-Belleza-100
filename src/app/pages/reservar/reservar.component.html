@@ -1,1 +1,108 @@
-<p>reservar works!</p>
+<div class="reservar-page section-padding bg-light">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Reserva tu cita en Belleza100</h2>
+      <p>Elige el tratamiento, selecciona el horario que mejor te venga y confirma tu cita en pocos pasos.</p>
+    </div>
+
+    <!-- Carga -->
+    <div *ngIf="loadingServices" class="text-center" style="padding: 3rem;">
+      <mat-spinner style="margin: 0 auto;" diameter="40"></mat-spinner>
+      <p style="margin-top: 1rem; color: var(--color-text-light);">Cargando tratamientos...</p>
+    </div>
+
+    <div *ngIf="!loadingServices" class="booking-flow">
+      
+      <!-- Paso 1: Elegir Categoría -->
+      <div class="step-card" *ngIf="!selectedCategory">
+        <h3>1. ¿Qué tipo de tratamiento buscas?</h3>
+        <div class="grid-buttons">
+          <button mat-stroked-button color="primary" class="big-btn" *ngFor="let cat of categories" (click)="selectCategory(cat)">
+            {{ cat }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Paso 2: Elegir Servicio -->
+      <div class="step-card" *ngIf="selectedCategory && !selectedService">
+        <div class="back-nav">
+          <button mat-button (click)="selectedCategory = null">← Volver a categorías</button>
+        </div>
+        <h3>2. Selecciona el servicio ({{ selectedCategory }})</h3>
+        
+        <div class="services-list">
+          <mat-card *ngFor="let srv of services" [style.display]="srv.category === selectedCategory ? 'block' : 'none'" class="service-card" (click)="selectService(srv)">
+            <mat-card-content>
+              <h4>{{ srv.name }}</h4>
+              <p class="service-desc">{{ srv.description }}</p>
+              <div class="service-meta">
+                <span>⏱ {{ srv.duration_min }} min</span>
+                <span *ngIf="srv.price_cents">💰 {{ srv.price_cents / 100 | currency:'EUR' }}</span>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+      <!-- Paso 3: Día y Hora -->
+      <div class="step-card" *ngIf="selectedService">
+        <div class="back-nav">
+          <button mat-button (click)="selectedService = null">← Volver a servicios</button>
+        </div>
+        <h3>3. ¿Cuándo te viene bien?</h3>
+        <p class="selected-summary">Has elegido: <strong>{{ selectedService.name }}</strong> ({{ selectedService.duration_min }} min)</p>
+
+        <div class="datetime-grid">
+          <div class="calendar-wrapper">
+            <mat-card class="demo-inline-calendar-card">
+              <mat-calendar [selected]="selectedDate" (selectedChange)="onDateChange($event)" [minDate]="minDate" [maxDate]="maxDate"></mat-calendar>
+            </mat-card>
+          </div>
+
+          <div class="slots-wrapper" *ngIf="selectedDate">
+            <h4>Horarios para el {{ selectedDate | date:'shortDate' }}</h4>
+            
+            <div *ngIf="loadingSlots" class="slots-loader">
+              <mat-spinner diameter="30"></mat-spinner>
+            </div>
+
+            <div *ngIf="!loadingSlots && availableSlots.length === 0" class="no-slots">
+              <p>No hay huecos disponibles este día. Por favor, elige otro.</p>
+            </div>
+
+            <div *ngIf="!loadingSlots && availableSlots.length > 0" class="slots-grid">
+              <button mat-stroked-button *ngFor="let slot of availableSlots" 
+                      [color]="selectedSlot === slot ? 'primary' : ''"
+                      [class.slot-selected]="selectedSlot === slot"
+                      (click)="selectSlot(slot)">
+                {{ slot }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 4: Confirmación (Auth Gate) -->
+      <div class="step-card" *ngIf="selectedSlot">
+        <h3>4. Confirmar cita</h3>
+        <p>Reserva: <strong>{{ selectedService?.name }}</strong> el <strong>{{ selectedDate | date:'longDate' }}</strong> a las <strong>{{ selectedSlot }}</strong></p>
+
+        <div *ngIf="!user" class="auth-gate">
+          <p>Para confirmar tu cita necesitamos que inicies sesión de forma segura con tu cuenta de Google.</p>
+          <button mat-flat-button color="primary" class="google-btn" (click)="loginWithGoogle()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+            Continuar con Google
+          </button>
+        </div>
+
+        <div *ngIf="user" class="confirm-box">
+          <p>Has iniciado sesión como <strong>{{ user.email }}</strong></p>
+          <button mat-flat-button color="primary" class="confirm-btn" [disabled]="bookingInProgress" (click)="confirmBooking()">
+            {{ bookingInProgress ? 'Confirmando...' : 'Confirmar Reserva Definitiva' }}
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

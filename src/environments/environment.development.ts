@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  supabaseUrl: 'YOUR_SUPABASE_URL',
-  supabaseKey: 'YOUR_SUPABASE_ANON_KEY',
+  supabaseUrl: 'https://placeholder.supabase.co',
+  supabaseKey: 'placeholder_key',
   apiUrl: '/.netlify/functions' // Ruta base para Netlify Functions
 };
